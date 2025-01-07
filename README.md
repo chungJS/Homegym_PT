@@ -36,7 +36,7 @@ Edit to Return not only the image but also the count after object recognition in
 
 Stream video and show counting using Flask
 
-![ui](https://github.com/chungJS/HOMEGYM_PT/raw/main/img/ui.png)
+![result](https://github.com/chungJS/HOMEGYM_PT/raw/main/img/result.png)
 
 ## Reference
 
