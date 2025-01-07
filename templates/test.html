@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOMEGYM PT</title>
+</head>
+<body>
+    <h1>HOMEGYM PT</h1>
+    <div>
+        <label for="exercise-type">Select exercise:</label>
+        <select id="exercise-type">
+            <option value="pushup">Push-up</option>
+            <option value="pullup">Pull-up</option>
+            <option value="abworkout">Ab Workout</option>
+        </select>
+    </div>
+    <div>
+        <label for="target-count">Enter target count:</label>
+        <input type="number" id="target-count" min="1">
+        <button onclick="setTarget()">Start</button>
+    </div>
+    <div id="count">Count: <span id="count-value">0</span></div>
+    <div id="time">Time: <span id="time-value">00:00</span></div>
+    <img id="video-feed" alt="Video">
+    <script>
+        function setTarget() {
+            var targetCount = document.getElementById('target-count').value;
+            var exerciseType = document.getElementById('exercise-type').value;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/set_target', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    startVideoFeed();
+                }
+            };
+            xhr.send('target_count=' + targetCount + '&exercise_type=' + exerciseType);
+        }
+
+        function startVideoFeed() {
+            var videoFeed = document.getElementById('video-feed');
+            videoFeed.src = '/video_feed';
+            videoFeed.onload = function() {
+                updateCount();
+            };
+        }
+
+        function updateCount() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    document.getElementById('count-value').innerText = response.count;
+                    document.getElementById('time-value').innerText = response.time;
+
+                    if (response.count >= document.getElementById('target-count').value) {
+                        alert('Congratulations! You reached your target.');
+                    } else {
+                        setTimeout(updateCount, 1000);
+                    }
+                }
+            };
+            xhr.open('GET', '/refresh', true);
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
