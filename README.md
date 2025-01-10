@@ -4,13 +4,9 @@ HOMEGYM PT is a program that helps users maintain proper posture and count repet
 
 Having a partner to ensure correct posture and count repetitions is [crucial](https://journals.lww.com/nsca-jscr/fulltext/2019/07000/presence_of_spotters_improves_bench_press.3.aspx) for motivation and effective workouts. HOMEGYM PT serves as this partner by using a Raspberry Pi camera to capture the user’s movements. With the help of a YOLO model, it evaluates the user’s posture and counts repetitions, improving workout efficiency for those exercising alone at home.
 
-<!-- vim-markdown-toc GFM -->
-
 - [Diagram](#Diagram)
 - [Features](#features)
 - [Reference](#Reference)
-
-<!-- vim-markdown-toc -->
 
 ## Diagram
 
