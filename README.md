@@ -10,7 +10,7 @@ Having a partner to ensure correct posture and count repetitions is [crucial](ht
 
 ## Diagram
 
-![diagram](https://github.com/chungJS/HOMEGYM_PT/raw/main/img/diagram.png)
+![diagram](img/diagram.png)
 
 ## Features
 
@@ -18,19 +18,19 @@ Having a partner to ensure correct posture and count repetitions is [crucial](ht
 
 Records the user’s workout and streams the video using the Raspberry Pi camera.
 
-![picam](https://github.com/chungJS/HOMEGYM_PT/raw/main/img/picam.png)
+![picam](img/picam.png)
 
 ### Recognition and Counting
 
 Modifies the original YOLO’s ai_gym.py function to not only return image frames but also count repetitions after object recognition in each frame.
 
-![edit](https://github.com/chungJS/HOMEGYM_PT/raw/main/img/edit.png)
+![edit](img/edit.png)
 
 ### Result
 
 Streams the video and displays repetition counts using Flask for real-time feedback.
 
-![result](https://github.com/chungJS/HOMEGYM_PT/raw/main/img/result.png)
+![result](img/result.png)
 
 ## Reference
 
